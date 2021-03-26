@@ -15,6 +15,9 @@ const App = () => {
           <Link to='/PizzaForm'>Make a Pizza</Link>
 
           <Switch>
+            <Route path={'/PizzaConfirmation'}>
+              <PizzaConfirmation />
+            </Route>
             <Route path={'/PizzaForm'}>
               <PizzaForm />
             </Route>
