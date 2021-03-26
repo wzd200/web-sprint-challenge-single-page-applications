@@ -22,11 +22,11 @@ export default function PizzaForm() {
               <p>Select your pizza size:</p>
               <label>
                   Pizza Size:
-                  <select>
-                      <option>Personal Pan</option>
-                      <option>Small</option>
-                      <option>Medium</option>
-                      <option>Large</option>
+                  <select name='pizzasize'>
+                      <option value='1'>Personal Pan</option>
+                      <option value='2'>Small</option>
+                      <option value='3'>Medium</option>
+                      <option value='4'>Large</option>
                   </select>
               </label>
               <p>Select your toppings:</p>
