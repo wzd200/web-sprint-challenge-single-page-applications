@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Route, Link, Switch } from "react-router-dom";
+import axios from 'axios';
+import * as yup from 'yup'
 
 // Components for Routes //
 import Home from './Home';
@@ -40,6 +42,67 @@ const App = () => {
   const [disabled, setDisabled] = useState(initialDisabled);
 
   // Helpers //
+  const getOrder = () => {
+    axios
+      .get('https://reqres.in/')
+      .then(res => {
+        setOrder(res.data.data);
+        console.log(res.data.data)
+      })
+      .catch(err => {
+        console.log(err)
+      })
+  }
+
+  const postNewOrder = (newOrder) => {
+    axios
+      .post('https://reqres.in/', newOrder)
+      .then(res => {
+        setOrder([res.data, ...order]);
+        setFormValues(initialFormValues);
+      })
+      .catch(err => {
+        console.log(err)
+      })
+  }
+
+  // Event Handlers //
+  const inputChange = (name, value) => {
+    yup
+      .reach(schema, name)
+      .validate(value)
+      .then(() => {
+        setFormErrors({
+          ...formErrors,
+          [name]: "",
+        });
+      })
+      .catch(err => {
+        setFormErrors({
+          ...formErrors,
+          [name]: err.errors[0],
+        });
+      });
+      setFormValues({
+        ...formValues,
+        [name]: value,
+      });
+  }
+
+  const formSubmit = () => {
+    const newOrder = {
+      name: formValues.name.trim(),
+      pizzasize: formValues.pizzasize,
+      pepperoni: formValues.pepperoni,
+      sausage: formValues.sausage,
+      peppers: formValues.peppers,
+      specialrequests: formValues.specialrequests,
+      
+    };
+    postNewOrder(newOrder);
+  };
+
+ 
 
   return (
     <div>
