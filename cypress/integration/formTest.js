@@ -1,3 +1,72 @@
 describe('Pizza App', () => {
-    
+    beforeEach(() => {
+        cy.visit('http://localhost:3000/PizzaForm')
+    })
+
+    const nameInput = () => cy.get('input[name="name"]')
+    const pepperoniInput = () => cy.get('input[name="pepperoni"]')
+    const sausageInput = () => cy.get('input[name="sausage"]')
+    const peppersInput = () => cy.get('input[name="peppers"]')
+    const sundriedtomatoesInput = () => cy.get('input[name="sundriedtomatoes"]')
+    const specialrequestsInput = () => cy.get('input[name="specialrequests"]')
+    const addPizzaInput = () => cy.get('#addButton')
+
+    it('sanity test', () => {
+        expect(1+2).to.equal(3);
+    })
+
+    it('name test', () => {
+        nameInput()
+          .should('have.value', '')
+          .type('Billybob')
+          .should('have.value', 'Billybob')
+    })
+
+    it('toppings test', () => {
+        pepperoniInput()
+          .should('have.value', 'false')
+        pepperoniInput().click()
+          .should('have.value', 'true')
+        sausageInput()
+          .should('have.value', 'false')
+        sausageInput().click()
+          .should('have.value', 'true')
+        peppersInput()
+          .should('have.value', 'false')
+        peppersInput().click()
+          .should('have.value', 'true')
+        sundriedtomatoesInput()
+          .should('have.value', 'false')
+        sundriedtomatoesInput().click()
+          .should('have.value', 'true')
+    })
+
+    it('submit form test', () => {
+        nameInput()
+          .should('have.value', '')
+          .type('Billybob')
+          .should('have.value', 'Billybob')
+        pepperoniInput()
+          .should('have.value', 'false')
+        pepperoniInput().click()
+          .should('have.value', 'true')
+        sausageInput()
+          .should('have.value', 'false')
+        sausageInput().click()
+          .should('have.value', 'true')
+        peppersInput()
+          .should('have.value', 'false')
+        peppersInput().click()
+          .should('have.value', 'true')
+        sundriedtomatoesInput()
+          .should('have.value', 'false')
+        sundriedtomatoesInput().click()
+          .should('have.value', 'true')
+        specialrequestsInput()
+          .should('have.value', '')
+          .type('Made with love <3')
+          .should('have.value', 'Made with love <3')
+        addPizzaInput().click()
+    })
+
 })

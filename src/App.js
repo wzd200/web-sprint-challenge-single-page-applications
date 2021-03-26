@@ -46,7 +46,7 @@ const App = () => {
 
   const postNewOrder = (newOrder) => {
     axios
-      .post('https://reqres.in/', newOrder)
+      .post('https://reqres.in/api/post', newOrder)
       .then(res => {
         console.log(res)
         setOrder([res.data, ...order]);

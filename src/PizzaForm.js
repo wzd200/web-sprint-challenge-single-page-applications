@@ -75,8 +75,15 @@ export default function PizzaForm(props) {
                   value={values.specialrequests}/>
               </label>
           </form>
-          <button onClick={onSubmit} disabled={disabled}>Add Pizza to Order</button>
-          <button onClick={routeToPizzaConfirmation} disabled={disabled}>Order Pizza</button>
+          <button 
+            id='addButton' onClick={onSubmit} 
+            disabled={disabled}>
+              Add Pizza to Order
+          </button>
+          <button 
+            onClick={routeToPizzaConfirmation} disabled={disabled}>
+              Order Pizza
+          </button>
         </div>
     )
 }
