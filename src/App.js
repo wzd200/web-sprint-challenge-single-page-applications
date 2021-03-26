@@ -48,8 +48,10 @@ const App = () => {
     axios
       .post('https://reqres.in/', newOrder)
       .then(res => {
+        console.log(res)
         setOrder([res.data, ...order]);
         setFormValues(initialFormValues);
+        console.log(newOrder)
       })
       .catch(err => {
         console.log(err)

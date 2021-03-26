@@ -31,7 +31,7 @@ export default function PizzaForm(props) {
               <p>Tell us your name:</p>
               <label>
                   Name:
-                  <input name='name' type='text' onChange={onChange} />
+                  <input name='name' type='text' onChange={onChange} value={values.name} />
               </label>
               <div style={{ color: 'red'}}>
                   <div>
@@ -41,7 +41,7 @@ export default function PizzaForm(props) {
               <p>Select your pizza size:</p>
               <label>
                   Pizza Size:
-                  <select name='pizzasize'>
+                  <select name='pizzasize' value={values.pizzasize} onChange={onChange}>
                       <option value='1'>Personal Pan</option>
                       <option value='2'>Small</option>
                       <option value='3'>Medium</option>
@@ -51,27 +51,31 @@ export default function PizzaForm(props) {
               <p>Select your toppings:</p>
               <label>
                   Pepperoni
-                  <input name='pepperoni' type='checkbox' onChange={onChange} />
+                  <input name='pepperoni' type='checkbox' onChange={onChange}
+                  value={values.pepperoni} />
               </label>
               <label>
                   Sausage
-                  <input name='sausage' type='checkbox' onChange={onChange} />
+                  <input name='sausage' type='checkbox' onChange={onChange}
+                  value={values.sausage} />
               </label>
               <label>
                   Peppers
-                  <input name='peppers' type='checkbox' onChange={onChange} />
+                  <input name='peppers' type='checkbox' onChange={onChange} value={values.peppers} />
               </label>
               <label>
                   Sun-Dried Tomatoes
-                  <input name='sundriedtomatoes' type='checkbox' onChange={onChange} />
+                  <input name='sundriedtomatoes' type='checkbox' onChange={onChange} value={values.sundriedtomatoes} />
               </label>
               <p>Any special requests?</p>
               <label>
                   Special Requests:
-                  <input name='specialrequests' type='text' onChange={onChange} />
+                  <input name='specialrequests' type='text' 
+                  onChange={onChange} 
+                  value={values.specialrequests}/>
               </label>
           </form>
-          <button>Add Pizza to Order</button>
+          <button onClick={onSubmit} disabled={disabled}>Add Pizza to Order</button>
           <button onClick={routeToPizzaConfirmation} disabled={disabled}>Order Pizza</button>
         </div>
     )
