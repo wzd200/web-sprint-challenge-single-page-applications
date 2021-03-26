@@ -12,7 +12,47 @@ export default function PizzaForm() {
 
     return (
         <div>
-          <h2>Tells us about your ideal pizza</h2>
+          <h2>Order your ideal pizza</h2>
+          <form>
+              <p>Tell us your name:</p>
+              <label>
+                  Name:
+                  <input name='name' type='text' />
+              </label>
+              <p>Select your pizza size:</p>
+              <label>
+                  Pizza Size:
+                  <select>
+                      <option>Personal Pan</option>
+                      <option>Small</option>
+                      <option>Medium</option>
+                      <option>Large</option>
+                  </select>
+              </label>
+              <p>Select your toppings:</p>
+              <label>
+                  Pepperoni
+                  <input name='pepperoni' type='checkbox' />
+              </label>
+              <label>
+                  Sausage
+                  <input name='sausage' type='checkbox' />
+              </label>
+              <label>
+                  Peppers
+                  <input name='peppers' type='checkbox' />
+              </label>
+              <label>
+                  Sun-Dried Tomatoes
+                  <input name='sundriedtomatoes' type='checkbox' />
+              </label>
+              <p>Any special requests?</p>
+              <label>
+                  Special Requests:
+                  <input name='specialrequests' type='text' />
+              </label>
+          </form>
+          <button>Add Pizza to Order</button>
           <button onClick={routeToPizzaConfirmation}>Order Pizza</button>
         </div>
     )
