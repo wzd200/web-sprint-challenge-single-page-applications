@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Route, Link, Switch } from "react-router-dom";
 import axios from 'axios';
 import * as yup from 'yup'
+import schema from './schema'
 
 // Components for Routes //
 import Home from './Home';
@@ -42,17 +43,6 @@ const App = () => {
   const [disabled, setDisabled] = useState(initialDisabled);
 
   // Helpers //
-  const getOrder = () => {
-    axios
-      .get('https://reqres.in/')
-      .then(res => {
-        setOrder(res.data.data);
-        console.log(res.data.data)
-      })
-      .catch(err => {
-        console.log(err)
-      })
-  }
 
   const postNewOrder = (newOrder) => {
     axios
@@ -102,6 +92,13 @@ const App = () => {
     postNewOrder(newOrder);
   };
 
+  // Side Effects //
+  useEffect(() => {
+    schema.isValid(formValues).then((valid) => {
+      setDisabled(!valid);
+    });
+  });
+
  
 
   return (
@@ -116,7 +113,12 @@ const App = () => {
               <PizzaConfirmation />
             </Route>
             <Route path={'/PizzaForm'}>
-              <PizzaForm />
+              <PizzaForm 
+                values={formValues}
+                change={inputChange}
+                submit={formSubmit}
+                disabled={disabled}
+                errors={formErrors}/>
             </Route>
             <Route path='/'>
               <Home />
